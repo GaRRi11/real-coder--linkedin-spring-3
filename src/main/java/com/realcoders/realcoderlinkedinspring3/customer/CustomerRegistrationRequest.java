@@ -15,7 +15,7 @@ public class CustomerRegistrationRequest {
     public CustomerRegistrationRequest(@JsonProperty("username") String username,
                                        @JsonProperty("email") String email,
                                        @JsonProperty("password") String password,
-                                       @JsonProperty("fullname") String fullname,
+                                       @JsonProperty("full_name") String fullname,
                                        @JsonProperty("age") Integer age) {
         this.username = username;
         this.email = email;
