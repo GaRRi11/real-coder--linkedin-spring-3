@@ -1,35 +1,24 @@
-package com.realcoders.realcoderlinkedinspring3.customer;
+package com.realcoders.realcoderlinkedinspring3.user;
 
+public class UserDTO {
 
+    Integer id;
+    String username;
+    String email;
+    String password;
+    String fullname;
+    Integer age;
 
-public class Customer {
-
-
-    private Integer id;
-    private String username;
-    private String email;
-    private String password;
-    private String fullname;
-
-    private Integer age;
-
-    private static Integer idCounter = 1;
-
-    private Integer generateId(){
-        return idCounter++;
+    public UserDTO( String username, String email, String password, String fullname, Integer age) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.fullname = fullname;
+        this.age = age;
     }
 
-    public Customer() {
-    }
-
-
-
-    public Customer( String username,
-                     String email,
-                     String password,
-                     String fullname,
-                     Integer age) {
-        this.id = generateId();
+    public UserDTO(Integer id, String username, String email, String password, String fullname, Integer age) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;

@@ -1,47 +1,47 @@
 package com.realcoders.realcoderlinkedinspring3.controller;
 
-import com.realcoders.realcoderlinkedinspring3.customer.Customer;
-import com.realcoders.realcoderlinkedinspring3.customer.CustomerRegistrationRequest;
-import com.realcoders.realcoderlinkedinspring3.customer.CustomerService;
+import com.realcoders.realcoderlinkedinspring3.user.*;
 import com.realcoders.realcoderlinkedinspring3.exceptions.EmailAlreadyExistsException;
 import com.realcoders.realcoderlinkedinspring3.exceptions.NullPointerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 
 @RestController
 public class Controller {
 
-    private final CustomerService customerService;
-
-    HashMap<Integer, Customer> savedCustomers = new HashMap<>();
+    private final UserService userService;
 
     @Autowired
-    public Controller(CustomerService customerService) {
-        this.customerService = customerService;
+    public Controller(UserService userService) {
+        this.userService = userService;
     }
 
 
     @PostMapping("/auth/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public String register(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
-        if (!customerService.notNull(customerRegistrationRequest)){
+    public String register(@RequestBody UserRegistrationRequest userRegistrationRequest) {
+        if (
+                userRegistrationRequest.getUsername() == null ||
+                        userRegistrationRequest.getEmail() == null ||
+                        userRegistrationRequest.getFullname() == null ||
+                        userRegistrationRequest.getPassword() == null
+        ){
             throw new NullPointerException("The request was malformed or missing required fields");
+
         }
-        if (!customerService.emailIsAvailable(savedCustomers,customerRegistrationRequest)){
+        if (userService.findByEmail(userRegistrationRequest.getEmail()).isPresent()){
             throw new EmailAlreadyExistsException("The specified username or email already exists");
         }
-        Customer customer = new Customer(
-                customerRegistrationRequest.getUsername(),
-                customerRegistrationRequest.getEmail(),
-                customerRegistrationRequest.getPassword(),
-                customerRegistrationRequest.getFullname(),
-                customerRegistrationRequest.getAge()
+        UserDTO userDTO = new UserDTO(
+                userRegistrationRequest.getUsername(),
+                userRegistrationRequest.getEmail(),
+                userRegistrationRequest.getFullname(),
+                userRegistrationRequest.getPassword(),
+                userRegistrationRequest.getAge()
         );
-        savedCustomers.put(customer.getId(), customer);
-        System.out.println(savedCustomers.get(customer.getId()).getId());
+        userService.save(userDTO);
         return "The user was successfully registered";
 
     }

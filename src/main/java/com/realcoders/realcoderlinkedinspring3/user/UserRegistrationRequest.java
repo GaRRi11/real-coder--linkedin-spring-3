@@ -1,9 +1,9 @@
-package com.realcoders.realcoderlinkedinspring3.customer;
+package com.realcoders.realcoderlinkedinspring3.user;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CustomerRegistrationRequest {
+public class UserRegistrationRequest {
 
     private String username;
     private String email;
@@ -12,11 +12,11 @@ public class CustomerRegistrationRequest {
     private Integer age;
 
     @JsonCreator
-    public CustomerRegistrationRequest(@JsonProperty("username") String username,
-                                       @JsonProperty("email") String email,
-                                       @JsonProperty("password") String password,
-                                       @JsonProperty("full_name") String fullname,
-                                       @JsonProperty("age") Integer age) {
+    public UserRegistrationRequest(@JsonProperty("username") String username,
+                                   @JsonProperty("email") String email,
+                                   @JsonProperty("password") String password,
+                                   @JsonProperty("full_name") String fullname,
+                                   @JsonProperty("age") Integer age) {
         this.username = username;
         this.email = email;
         this.password = password;

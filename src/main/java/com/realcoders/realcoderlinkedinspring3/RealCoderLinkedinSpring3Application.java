@@ -1,6 +1,5 @@
 package com.realcoders.realcoderlinkedinspring3;
 
-import com.realcoders.realcoderlinkedinspring3.customer.Customer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
