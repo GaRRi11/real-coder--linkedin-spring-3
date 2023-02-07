@@ -1,5 +1,6 @@
 package com.realcoders.realcoderlinkedinspring3.customer;
 
+<<<<<<< HEAD
 public class Customer {
 
     private Integer id;
@@ -10,6 +11,22 @@ public class Customer {
     private Integer age;
 
     private static Integer idCounter = 0;
+=======
+
+
+public class Customer {
+
+
+    private Integer id;
+    private String username;
+    private String email;
+    private String password;
+    private String fullname;
+
+    private Integer age;
+
+    private static Integer idCounter = 1;
+>>>>>>> 1dfe3a11bc0845b99690a7f7c77953d66c169c3e
 
     private Integer generateId(){
         return idCounter++;
@@ -18,6 +35,7 @@ public class Customer {
     public Customer() {
     }
 
+<<<<<<< HEAD
     public Customer(String usarname, String email, String password, String fullname, Integer age) {
         this.id = generateId();
         this.usarname = usarname;
@@ -30,6 +48,17 @@ public class Customer {
     public Customer(Integer id, String usarname, String email, String password, String fullname, Integer age) {
         this.id = id;
         this.usarname = usarname;
+=======
+
+
+    public Customer( String username,
+                     String email,
+                     String password,
+                     String fullname,
+                     Integer age) {
+        this.id = generateId();
+        this.username = username;
+>>>>>>> 1dfe3a11bc0845b99690a7f7c77953d66c169c3e
         this.email = email;
         this.password = password;
         this.fullname = fullname;
@@ -44,12 +73,21 @@ public class Customer {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public String getUsarname() {
         return usarname;
     }
 
     public void setUsarname(String usarname) {
         this.usarname = usarname;
+=======
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+>>>>>>> 1dfe3a11bc0845b99690a7f7c77953d66c169c3e
     }
 
     public String getEmail() {
