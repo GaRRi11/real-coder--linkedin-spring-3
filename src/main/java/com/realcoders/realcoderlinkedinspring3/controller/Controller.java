@@ -1,6 +1,15 @@
 package com.realcoders.realcoderlinkedinspring3.controller;
 
+<<<<<<< HEAD
 import com.realcoders.realcoderlinkedinspring3.user.*;
+=======
+<<<<<<< HEAD
+public class Controller {
+=======
+import com.realcoders.realcoderlinkedinspring3.customer.Customer;
+import com.realcoders.realcoderlinkedinspring3.customer.CustomerRegistrationRequest;
+import com.realcoders.realcoderlinkedinspring3.customer.CustomerService;
+>>>>>>> 333b650a1b8cb280448837bf050001eb6b4c9cbf
 import com.realcoders.realcoderlinkedinspring3.exceptions.EmailAlreadyExistsException;
 import com.realcoders.realcoderlinkedinspring3.exceptions.NullPointerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +55,5 @@ public class Controller {
 
     }
 
+>>>>>>> 1dfe3a11bc0845b99690a7f7c77953d66c169c3e
 }
