@@ -1,5 +1,7 @@
-package com.realcoders.realcoderlinkedinspring3.user;
+package com.realcoders.realcoderlinkedinspring3.UserRepository;
 
+import com.realcoders.realcoderlinkedinspring3.user.User;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,5 +13,7 @@ public interface UserRepository {
     Optional<User> findById(Integer id);
 
     Optional<User> findByEmail(String email);
+
+    Optional<User> findByUsername(String username);
 
 }

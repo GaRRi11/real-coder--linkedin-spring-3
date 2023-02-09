@@ -8,6 +8,15 @@ import java.util.HashMap;
 @Component
 public class InMemoryDb {
 
-   public HashMap<Integer, User> savedCustomers = new HashMap<>();
+   private HashMap<Integer, User> savedCustomers = new HashMap<>();
+   public void insert(User user){
+      savedCustomers.put(user.getId(),user);
+   }
+   public User findById(Integer id){
+      return savedCustomers.get(id);
+   }
+   public int savedCustomersSize(){
+      return savedCustomers.size();
+   }
 
 }

@@ -1,27 +1,37 @@
-package com.realcoders.realcoderlinkedinspring3.user;
+package com.realcoders.realcoderlinkedinspring3.controller;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+public class UserDTO {
 
-public class UserRegistrationRequest {
+    Integer id;
+    String username;
+    String email;
+    String password;
+    String fullname;
+    Integer age;
 
-    private String username;
-    private String email;
-    private String password;
-    private String fullname;
-    private Integer age;
-
-    @JsonCreator
-    public UserRegistrationRequest(@JsonProperty("username") String username,
-                                   @JsonProperty("email") String email,
-                                   @JsonProperty("password") String password,
-                                   @JsonProperty("full_name") String fullname,
-                                   @JsonProperty("age") Integer age) {
+    public UserDTO( String username, String email, String password, String fullname, Integer age) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.fullname = fullname;
         this.age = age;
+    }
+
+    public UserDTO(Integer id, String username, String email, String password, String fullname, Integer age) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.fullname = fullname;
+        this.age = age;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {

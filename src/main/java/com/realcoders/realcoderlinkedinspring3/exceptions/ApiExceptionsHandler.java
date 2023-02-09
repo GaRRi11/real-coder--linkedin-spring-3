@@ -30,5 +30,15 @@ public class ApiExceptionsHandler {
         );
         return new ResponseEntity<>(apiException,conflict);
     }
+    @ExceptionHandler(value = {UserNotFoundException.class})
+    public ResponseEntity<Object> handleNullPointerException (UserNotFoundException e){
+        HttpStatus badRequest = HttpStatus.UNAUTHORIZED;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(apiException,badRequest);
+    }
 
 }

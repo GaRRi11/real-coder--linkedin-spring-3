@@ -1,5 +1,7 @@
-package com.realcoders.realcoderlinkedinspring3.user;
+package com.realcoders.realcoderlinkedinspring3.controller;
 
+import com.realcoders.realcoderlinkedinspring3.controller.UserDTO;
+import com.realcoders.realcoderlinkedinspring3.user.User;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
@@ -25,6 +27,16 @@ public class UserDTOMapper implements Function<User, UserDTO> {
                 userDTO.getPassword(),
                 userDTO.getFullname(),
                 userDTO.getAge()
+        );
+    }
+
+    public User fromDTO(UserRegistrationDTO userRegistrationDTODTO) {
+        return new User(
+                userRegistrationDTODTO.getUsername(),
+                userRegistrationDTODTO.getEmail(),
+                userRegistrationDTODTO.getPassword(),
+                userRegistrationDTODTO.getFullname(),
+                userRegistrationDTODTO.getAge()
         );
     }
 
