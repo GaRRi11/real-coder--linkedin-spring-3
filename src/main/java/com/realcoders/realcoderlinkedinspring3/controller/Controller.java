@@ -31,7 +31,7 @@ public class Controller {
 
     @PostMapping("/auth/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public String register(@RequestBody UserRegistrationDTO userRegistrationDTO)
+    public ResponseEntity<String> register(@RequestBody UserRegistrationDTO userRegistrationDTO)
             throws NoSuchAlgorithmException{
         if (
                 userRegistrationDTO.getUsername() == null ||
@@ -46,7 +46,7 @@ public class Controller {
             throw new EmailAlreadyExistsException("The specified username or email already exists");
         }
          userService.register(userDTOMapper.fromDTO(userRegistrationDTO));
-        return "User created successfully";
+        return ResponseEntity.ok("User created successfully");
 //        return "The user was successfully registered" + "  token: " + token;
 
     }
