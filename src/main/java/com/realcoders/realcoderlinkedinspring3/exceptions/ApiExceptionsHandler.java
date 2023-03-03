@@ -41,4 +41,25 @@ public class ApiExceptionsHandler {
         return new ResponseEntity<>(apiException,badRequest);
     }
 
+    @ExceptionHandler(value = {InvalidPasswordException.class})
+    public ResponseEntity<Object> handleInvalidPasswordException (InvalidPasswordException e){
+        HttpStatus badRequest = HttpStatus.UNAUTHORIZED;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(apiException,badRequest);
+    }
+    @ExceptionHandler(value = {InvalidJwtTokenException.class})
+    public ResponseEntity<Object> handleInvalidPasswordException (InvalidJwtTokenException e){
+        HttpStatus badRequest = HttpStatus.UNAUTHORIZED;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(apiException,badRequest);
+    }
+
 }

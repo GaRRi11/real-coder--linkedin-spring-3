@@ -21,6 +21,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void save(User user) {
          inMemoryDb.insert(user);
+        System.out.println(findById(1).toString());
     }
 
     @Override
@@ -30,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findByEmail(String email) {
-        for (int i = 1; i <= inMemoryDb.savedCustomersSize(); i++) {
+        for (Integer i = 1; i <= inMemoryDb.savedCustomersSize(); i++) {
             if (inMemoryDb.findById(i).getEmail().equals(email)){
                 return Optional.of(inMemoryDb.findById(i));
             }
@@ -40,7 +41,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findByUsername(String username) {
-        for (int i = 1; i <= inMemoryDb.savedCustomersSize(); i++) {
+        for (Integer i = 1; i <= inMemoryDb.savedCustomersSize(); i++) {
             if (inMemoryDb.findById(i).getUsername().equals(username)){
                 return Optional.of(inMemoryDb.findById(i));
             }

@@ -1,11 +1,7 @@
 package com.realcoders.realcoderlinkedinspring3.user;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-
-public class User implements UserDetails {
+public class User {
 
 
     private Integer id;
@@ -18,11 +14,12 @@ public class User implements UserDetails {
 
     private static Integer idCounter = 1;
 
-    private Integer generateId(){
+    public Integer generateId(){
         return idCounter++;
     }
 
     public User() {
+
     }
 
 
@@ -52,26 +49,6 @@ public class User implements UserDetails {
         return username;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -82,11 +59,6 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
     }
 
     public String getPassword() {
@@ -119,5 +91,17 @@ public class User implements UserDetails {
 
     public static void setIdCounter(Integer idCounter) {
         User.idCounter = idCounter;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", fullname='" + fullname + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

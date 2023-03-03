@@ -4,6 +4,7 @@ import com.realcoders.realcoderlinkedinspring3.user.User;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 @Component
 public class InMemoryDb {
@@ -12,7 +13,7 @@ public class InMemoryDb {
    public void insert(User user){
       savedCustomers.put(user.getId(),user);
    }
-   public User findById(Integer id){
+   public User findById(int id){
       return savedCustomers.get(id);
    }
    public int savedCustomersSize(){

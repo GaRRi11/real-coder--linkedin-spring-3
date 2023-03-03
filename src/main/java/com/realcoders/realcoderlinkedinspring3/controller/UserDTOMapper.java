@@ -1,18 +1,23 @@
 package com.realcoders.realcoderlinkedinspring3.controller;
 
-import com.realcoders.realcoderlinkedinspring3.controller.UserDTO;
+import com.realcoders.realcoderlinkedinspring3.UserService.UserPasswordEncoder;
 import com.realcoders.realcoderlinkedinspring3.user.User;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
 @Component
-public class UserDTOMapper implements Function<User, UserDTO> {
+public class UserDTOMapper implements Function<User, UserRegistrationDTO> {
+
+    private final UserPasswordEncoder userPasswordEncoder;
+
+    public UserDTOMapper(UserPasswordEncoder userPasswordEncoder) {
+        this.userPasswordEncoder = userPasswordEncoder;
+    }
 
     @Override
-    public UserDTO apply(User user) {
-        return new UserDTO(
-                user.getId(),
+    public UserRegistrationDTO apply(User user) {
+        return new UserRegistrationDTO(
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
@@ -20,21 +25,13 @@ public class UserDTOMapper implements Function<User, UserDTO> {
                 user.getAge()
         );
     }
-    public User fromDTO(UserDTO userDTO) {
-        return new User(
-                userDTO.getUsername(),
-                userDTO.getEmail(),
-                userDTO.getPassword(),
-                userDTO.getFullname(),
-                userDTO.getAge()
-        );
-    }
+
 
     public User fromDTO(UserRegistrationDTO userRegistrationDTODTO) {
         return new User(
                 userRegistrationDTODTO.getUsername(),
                 userRegistrationDTODTO.getEmail(),
-                userRegistrationDTODTO.getPassword(),
+                userPasswordEncoder.encode(userRegistrationDTODTO.getPassword()),
                 userRegistrationDTODTO.getFullname(),
                 userRegistrationDTODTO.getAge()
         );
