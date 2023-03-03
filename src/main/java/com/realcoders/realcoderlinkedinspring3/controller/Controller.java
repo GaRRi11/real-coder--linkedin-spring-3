@@ -31,7 +31,7 @@ public class Controller {
 
     @PostMapping("/auth/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public AuthenticationResponse register(@RequestBody UserRegistrationDTO userRegistrationDTO)
+    public String register(@RequestBody UserRegistrationDTO userRegistrationDTO)
             throws NoSuchAlgorithmException{
         if (
                 userRegistrationDTO.getUsername() == null ||
@@ -45,7 +45,8 @@ public class Controller {
         if (userService.findByEmail(userRegistrationDTO.getEmail()).isPresent()){
             throw new EmailAlreadyExistsException("The specified username or email already exists");
         }
-        return userService.register(userDTOMapper.fromDTO(userRegistrationDTO));
+         userService.register(userDTOMapper.fromDTO(userRegistrationDTO));
+        return "User created successfully";
 //        return "The user was successfully registered" + "  token: " + token;
 
     }
@@ -70,12 +71,6 @@ public class Controller {
         }
 
         return "The company was successfully created.";
-    }
-
-    @GetMapping("/logged/test")
-    public String test(){
-
-        return "test";
     }
 
 }
