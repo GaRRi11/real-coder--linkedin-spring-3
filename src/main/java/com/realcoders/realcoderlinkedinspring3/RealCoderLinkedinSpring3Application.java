@@ -1,10 +1,9 @@
 package com.realcoders.realcoderlinkedinspring3;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.realcoders.realcoderlinkedinspring3.jwtService.JwtService;
-import com.realcoders.realcoderlinkedinspring3.user.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -13,6 +12,7 @@ public class RealCoderLinkedinSpring3Application {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, JsonProcessingException {
         SpringApplication.run(RealCoderLinkedinSpring3Application.class, args);
+
 //
 //          JwtService jwtService = new JwtService();
 //        System.out.println(jwtService.extractExpiration("eyJhbGciOiJIUzI1NiIsInR5cCI6Ik1ZVE9LRU4ifQ.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhc3EiLCJleHBpcmVzQXQiOiI5Njc3OTMxNzUwNjcxIn0.ryTW78RFogmNrb2z94drJtLu2dywDJJ9DDEw5N909gg"));
